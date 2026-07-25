@@ -39,7 +39,6 @@ const Upload = ({ onComplete }: UploadProps) => {
         reader.onerror = () => {
             setFile(null);
             setProgress(0); 
-            console.error("Error reading file"); 
         }
         reader.onloadend = () => {
             const base64Data = reader.result as string; 
@@ -109,8 +108,8 @@ const Upload = ({ onComplete }: UploadProps) => {
                 >
                     <input 
                         type="file"
-                        className="drop-icon"
-                        accept=".jpg,.jpeg,.png"
+                        className="drop-input"
+                        accept=".jpg,.jpeg,.png,.webp"
                         disabled={!isSignedIn}
                         onChange={handleChange}
                     />
@@ -120,11 +119,8 @@ const Upload = ({ onComplete }: UploadProps) => {
                             <UploadIcon size={20} />
                         </div>
                         <p> 
-                            {isSignedIn ? (
-                                "Click to upload or just drag and drop"
-                            ): (
-                                "Sign in or sign up with Puter to upload"
-                            )}
+                            {isSignedIn ? 
+                                ("Click to upload or just drag and drop"): ("Sign in or sign up with Puter to upload")}
                             </p> 
                             <p className="help"> Maximum file size 50MB. </p> 
                         </div>
